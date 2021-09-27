@@ -2,14 +2,53 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => res.send("Did we just set up a server?!?!?!?!"));
+app.get("/", (req, res) => res.send(`<h1> Welcome to Puppies and Kittens Site </h1>`
 
-// This is the port we are "opening up" to the interet (*** WELL..... not really availbe to the internet in this case, but it is available on your machine via localhost:<portnumber>)
+
+));
+
+
+app.get("/puppies", (req, res) => {
+  res.send(
+  `
+  <h3>Puppies</h3>
+  <ul> 
+  <li>Juno</li>
+  <li>Rosie</li>
+  <li>Joseph A.</li>
+  </ul
+    `
+  )
+})
+
+app.get("/kittens", (req, res) => {
+  res.send("kittens")
+})
+
+
+// app.get("puppies/:id", (req, res) => {
+//   let puppyId = req.params.id
+//   console.log(puppyId)
+//   res.send(puppyId)
+// })
+
+app.get('/puppies/:msg', (req, res) => {
+ 
+  let message = req.params.msg
+  res.send(message)
+})
+
+// app.post("/pets", (req, res) => {
+  
+// })
+// This is the port we are "opening up" to the interet (*** WELL.... not really availbe to the internet in this case, but it is available on your machine via localhost:<portnumber>)
 const PORT = 1337;
 // This is the method on 'app' that starts out server
 app.listen(PORT, () => {
   console.log(`App listening in port ${PORT}`);
 });
+
+
 
 
 /*
